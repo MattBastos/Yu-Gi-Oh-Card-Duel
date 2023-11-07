@@ -45,7 +45,39 @@
       </section>
 
       <section class="right-container">
-        <section class="card-box-container"></section>
+        <section class="card-box-container">
+          <section id="enemy-cards" class="card-box framed"></section>
+
+          <section class="battlefield">
+            <section class="battlefield-cards">
+              <section class="card-infield">
+                <img id="player-card-field" alt="Carta do Jogador" />
+              </section>
+
+              <img
+                id="millenium-eye-battlefield"
+                src="./src/assets/icons/millenium2.png"
+                alt="Olho do Milênio"
+              />
+
+              <section class="card-infield">
+                <img id="enemy-card-field" alt="Carta do Inimigo" />
+              </section>
+            </section>
+
+            <section class="battlefield-button">
+              <button
+                onclick="resetDuel()"
+                id="next-duel-button"
+                class="rpgui-button"
+              >
+                Duelar
+              </button>
+            </section>
+          </section>
+
+          <section id="player-cards" class="card-box framed"></section>
+        </section>
       </section>
     </section>
 
