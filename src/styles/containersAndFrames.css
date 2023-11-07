@@ -59,6 +59,8 @@
 
 /* game div with golden2 background image*/
 .framed-golden-2 {
+  height: 100vh;
+
   /* border */
   border-style: solid;
   border-image-source: url("../assets/rpgui/border-image-golden2.png");
