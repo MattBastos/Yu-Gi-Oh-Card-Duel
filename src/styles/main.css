@@ -88,3 +88,18 @@
 #card-status {
   font-size: 1rem;
 }
+
+#player-card-field,
+#enemy-card-field {
+  height: 180px;
+  width: 125px;
+}
+
+#millenium-eye-battlefield {
+  height: 100px;
+}
+
+#next-duel-button {
+  cursor: pointer;
+  text-transform: uppercase;
+}
