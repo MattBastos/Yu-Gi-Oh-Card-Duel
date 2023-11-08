@@ -71,6 +71,13 @@
   color: #ff0000;
 }
 
+#card-image {
+  height: 20rem;
+  width: 15rem;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+}
+
 .card-details {
   display: flex;
   flex-direction: column;

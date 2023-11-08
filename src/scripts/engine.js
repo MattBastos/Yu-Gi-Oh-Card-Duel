@@ -4,19 +4,19 @@ const cardsData = [
   {
     id: 0,
     name: "Exodia, O Proibido",
-    attribute: "rock",
+    attribute: "Pedra",
     img: `${cardImagePath}exodia.png`,
   },
   {
     id: 1,
     name: "Dragão Branco de Olhos Azuis",
-    attribute: "scissors",
+    attribute: "Tesoura",
     img: `${cardImagePath}dragon.png`,
   },
   {
     id: 2,
     name: "Mago Negro",
-    attribute: "paper",
+    attribute: "Papel",
     img: `${cardImagePath}magician.png`,
   },
 ];
@@ -25,9 +25,9 @@ const state = {
   view: {
     scoreBox: document.getElementById("score-box"),
     card: {
-      image: document.getElementById("card-image"),
       name: document.getElementById("card-name"),
       attribute: document.getElementById("card-attribute"),
+      image: document.getElementById("card-image"),
     },
     fieldSide: {
       player: document.getElementById("player-cards"),
@@ -56,6 +56,12 @@ const getRandomCardId = async () => {
   const randomIndex = Math.floor(Math.random() * cardsData.length);
 
   return cardsData[randomIndex].id;
+};
+
+const drawSelectedCard = (cardIndex) => {
+  view.card.name.innerText = cardsData[cardIndex].name;
+  view.card.attribute.innerText = `Atributo:${cardsData[cardIndex].attribute}`;
+  view.card.image.src = cardsData[cardIndex].img;
 };
 
 const createCardImage = async (cardId, fieldSide) => {
