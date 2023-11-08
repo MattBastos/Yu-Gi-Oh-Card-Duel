@@ -1,23 +1,23 @@
-const imagePath = "../assets/icons/";
+const cardImagePath = "./src/assets/icons/";
 
 const cardsData = [
   {
     id: 0,
     name: "Exodia, O Proibido",
     attribute: "rock",
-    img: `${imagePath}exodia.png`,
+    img: `${cardImagePath}exodia.png`,
   },
   {
     id: 1,
     name: "Dragão Branco de Olhos Azuis",
     attribute: "scissors",
-    img: `${imagePath}dragon.png`,
+    img: `${cardImagePath}dragon.png`,
   },
   {
     id: 2,
     name: "Mago Negro",
     attribute: "paper",
-    img: `${imagePath}magician.png`,
+    img: `${cardImagePath}magician.png`,
   },
 ];
 
@@ -29,7 +29,11 @@ const state = {
       name: document.getElementById("card-name"),
       attribute: document.getElementById("card-attribute"),
     },
-    fieldCards: {
+    fieldSide: {
+      player: document.getElementById("player-cards"),
+      enemy: document.getElementById("enemy-cards"),
+    },
+    battlefieldCards: {
       player: document.getElementById("player-card-field"),
       enemy: document.getElementById("enemy-card-field"),
     },
@@ -37,7 +41,7 @@ const state = {
   },
   values: {
     playerScore: 0,
-    enemyScire: 0,
+    enemyScore: 0,
     attributes: {
       str: { beats: "dex", losesTo: "int" },
       dex: { beats: "int", losesTo: "str" },
@@ -54,18 +58,36 @@ const getRandomCardId = async () => {
   return cardsData[randomIndex].id;
 };
 
-const drawCards = (cardsQuantity, fieldSide) => {
-  cardsQuantity.forEach(async (_) => {
+const createCardImage = async (cardId, fieldSide) => {
+  const cardImage = document.createElement("img");
+
+  cardImage.classList.add("card");
+  cardImage.setAttribute("src", `${cardImagePath}card-back.png`);
+  cardImage.setAttribute("data-id", cardId);
+
+  if (fieldSide === "player") {
+    cardImage.addEventListener("mouseover", () => drawSelectedCard(cardId));
+
+    cardImage.addEventListener("click", () =>
+      setCardsField(cardImage.getAttribute("data-id"))
+    );
+  }
+
+  return cardImage;
+};
+
+const drawCards = async (cardsQuantity, fieldSide) => {
+  for (let i = 0; i < cardsQuantity; i += 1) {
     const randomCardId = await getRandomCardId();
     const cardImage = await createCardImage(randomCardId, fieldSide);
 
-    document.getElementById(fieldSide).append(cardImage);
-  });
+    view.fieldSide[fieldSide].appendChild(cardImage);
+  }
 };
 
 const init = () => {
-  drawCards(5, view.fieldCards.player);
-  drawCards(5, view.fieldCards.enemy);
+  drawCards(5, "player");
+  drawCards(5, "enemy");
 };
 
 init();
