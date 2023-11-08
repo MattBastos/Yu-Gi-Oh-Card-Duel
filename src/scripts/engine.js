@@ -48,6 +48,12 @@ const state = {
 
 const { view, values } = state;
 
+const getRandomCardId = async () => {
+  const randomIndex = Math.floor(Math.random() * cardsData.length);
+
+  return cardsData[randomIndex].id;
+};
+
 const drawCards = (cardsQuantity, fieldSide) => {
   cardsQuantity.forEach(async (_) => {
     const randomCardId = await getRandomCardId();
