@@ -52,7 +52,7 @@ const state = {
 
 const { view, values } = state;
 
-const getRandomCardId = async () => {
+const getRandomCardId = () => {
   const randomIndex = Math.floor(Math.random() * cardsData.length);
 
   return cardsData[randomIndex].id;
@@ -64,7 +64,7 @@ const drawSelectedCard = (cardIndex) => {
   view.card.image.src = cardsData[cardIndex].img;
 };
 
-const createCardImage = async (cardId, fieldSide) => {
+const createCardImage = (cardId, fieldSide) => {
   const cardImage = document.createElement("img");
 
   cardImage.classList.add("card");
@@ -84,10 +84,10 @@ const createCardImage = async (cardId, fieldSide) => {
   return cardImage;
 };
 
-const drawCards = async (cardsQuantity, fieldSide) => {
+const drawCards = (cardsQuantity, fieldSide) => {
   for (let i = 0; i < cardsQuantity; i += 1) {
-    const randomCardId = await getRandomCardId();
-    const cardImage = await createCardImage(randomCardId, fieldSide);
+    const randomCardId = getRandomCardId();
+    const cardImage = createCardImage(randomCardId, fieldSide);
 
     view.fieldSide[fieldSide].appendChild(cardImage);
   }
