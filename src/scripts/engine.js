@@ -72,6 +72,8 @@ const createCardImage = async (cardId, fieldSide) => {
   cardImage.setAttribute("data-id", cardId);
 
   if (fieldSide === "player") {
+    cardImage.classList.add("player-card");
+
     cardImage.addEventListener("mouseover", () => drawSelectedCard(cardId));
 
     cardImage.addEventListener("click", () =>

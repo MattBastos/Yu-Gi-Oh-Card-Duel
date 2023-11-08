@@ -72,10 +72,7 @@
 }
 
 #card-image {
-  height: 20rem;
-  width: 15rem;
-  border: 1px solid #ffffff;
-  border-radius: 8px;
+  height: 15rem;
 }
 
 .card-details {
@@ -91,10 +88,12 @@
 
 #card-name {
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #card-attribute {
   font-size: 1rem;
+  text-align: center;
 }
 
 .str {
@@ -174,4 +173,9 @@
 .card {
   height: 100px;
   border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.player-card:hover {
+  transform: scale(1.2);
 }
