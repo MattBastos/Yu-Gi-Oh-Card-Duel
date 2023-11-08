@@ -48,8 +48,18 @@ const state = {
 
 const { view, values } = state;
 
+const drawCards = (cardsQuantity, fieldSide) => {
+  cardsQuantity.forEach(async (_) => {
+    const randomCardId = await getRandomCardId();
+    const cardImage = await createCardImage(randomCardId, fieldSide);
+
+    document.getElementById(fieldSide).append(cardImage);
+  });
+};
+
 const init = () => {
-  drawCards();
+  drawCards(5, view.fieldCards.player);
+  drawCards(5, view.fieldCards.enemy);
 };
 
 init();
