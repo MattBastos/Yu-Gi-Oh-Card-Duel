@@ -38,11 +38,36 @@ const state = {
   values: {
     playerScore: 0,
     enemyScire: 0,
+    attributes: {
+      str: { beats: "dex", losesTo: "int" },
+      dex: { beats: "int", losesTo: "str" },
+      int: { beats: "str", losesTo: "dex" },
+    },
   },
 };
 
 const { view, values } = state;
 
-const init = () => {};
+const determineWinner = (playerCard, enemyCard) => {
+  const playerCardAtt = cardsData.find((card) => card === playerCard).attribute;
+  const enemyCardAtt = cardsData.find((card) => card === enemyCard).attribute;
+  const { attributes } = values;
+
+  if (attributes[playerCardAtt].beats === enemyCardAtt) {
+    return "O Jogador Venceu!";
+  } else if (attributes[playerCardAtt].losesTo === enemyCardAtt) {
+    return "O Inimigo Venceu!";
+  } else {
+    return "Empate!";
+  }
+};
+
+const init = () => {
+  const playerCard = cardsData[1];
+  const enemyCard = cardsData[2];
+
+  const duelResult = determineWinner(playerCard, enemyCard);
+  console.log(duelResult);
+};
 
 init();
