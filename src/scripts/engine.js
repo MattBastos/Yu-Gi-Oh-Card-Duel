@@ -33,6 +33,7 @@ const state = {
       player: document.getElementById("player-cards"),
       enemy: document.getElementById("enemy-cards"),
     },
+    cards: document.getElementsByClassName("card"),
     battlefieldCards: {
       player: document.getElementById("player-card-field"),
       enemy: document.getElementById("enemy-card-field"),
@@ -83,8 +84,13 @@ const setBattlefieldCardsImage = (playerCardId, enemyCardId) => {
   view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
 };
 
+const hideAllCards = () => {
+  const allCards = [...view.cards];
+  allCards.forEach((card) => card.remove());
+};
+
 const setCardsField = (cardId) => {
-  /* hideAllCards(); */
+  hideAllCards();
 
   let enemyCardId = getRandomCardId();
 
