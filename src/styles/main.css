@@ -73,6 +73,8 @@
 
 #card-image {
   height: 15rem;
+  width: 10.5rem;
+  border-radius: 8px;
 }
 
 .card-details {
