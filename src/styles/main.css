@@ -136,7 +136,13 @@
   flex-direction: column;
   height: min-content;
   padding: 0.1rem 0;
-  gap: 2rem;
+  gap: 4rem;
+}
+
+#message {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #ffffff;
 }
 
 .battlefield-cards,
@@ -161,13 +167,13 @@
 #enemy-card-field {
   height: 180px;
   width: 125px;
+  border-radius: 8px;
 }
 
 #millenium-eye-battlefield {
   height: 100px;
 }
-
-#next-duel-button {
+F #next-duel-button {
   cursor: pointer;
   text-transform: uppercase;
 }

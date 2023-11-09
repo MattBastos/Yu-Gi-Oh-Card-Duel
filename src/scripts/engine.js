@@ -35,6 +35,7 @@ const state = {
       enemy: document.getElementById("enemy-cards"),
     },
     cards: document.getElementsByClassName("card"),
+    message: document.getElementById("message"),
     battlefieldCards: {
       player: document.getElementById("player-card-field"),
       enemy: document.getElementById("enemy-card-field"),
@@ -69,15 +70,40 @@ const determineWinner = (playerCardId, enemyCardId) => {
   }
 };
 
+const updateMessage = (duelResult) => {
+  if (duelResult === "win") {
+    view.message.innerText = "Vitória!";
+    view.message.style.color = "#00d800";
+  } else if (duelResult === "lose") {
+    view.message.innerText = "Derrota!";
+    view.message.style.color = "#ff0000";
+  } else {
+    view.message.innerText = "Empate!";
+    view.message.style.color = "#999999";
+  }
+};
+
+const updatePlayerScore = () => {
+  values.playerScore += 1;
+  view.victories.innerText = `Vitórias: ${values.playerScore}`;
+
+  updateMessage("win");
+};
+
+const updateEnemyScore = () => {
+  values.enemyScore += 1;
+  view.losses.innerText = `Derrotas: ${values.enemyScore}`;
+
+  updateMessage("lose");
+};
+
 const updateScores = (winner) => {
   if (winner === "player") {
-    values.playerScore += 1;
-    view.victories.innerText = `Vitórias: ${values.playerScore}`;
+    updatePlayerScore();
   } else if (winner === "enemy") {
-    values.enemyScore += 1;
-    view.losses.innerText = `Derrotas: ${values.enemyScore}`;
+    updateEnemyScore();
   } else {
-    return;
+    updateMessage("draw");
   }
 };
 
