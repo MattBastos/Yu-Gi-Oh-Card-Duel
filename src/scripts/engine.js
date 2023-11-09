@@ -4,19 +4,19 @@ const cardsData = [
   {
     id: 0,
     name: "Exodia, O Proibido",
-    attribute: "Pedra",
+    attribute: "pedra",
     img: `${cardImagePath}exodia.png`,
   },
   {
     id: 1,
     name: "Dragão Branco de Olhos Azuis",
-    attribute: "Tesoura",
+    attribute: "tesoura",
     img: `${cardImagePath}dragon.png`,
   },
   {
     id: 2,
     name: "Mago Negro",
-    attribute: "Papel",
+    attribute: "papel",
     img: `${cardImagePath}magician.png`,
   },
 ];
@@ -43,9 +43,9 @@ const state = {
     playerScore: 0,
     enemyScore: 0,
     attributes: {
-      str: { beats: "dex", losesTo: "int" },
-      dex: { beats: "int", losesTo: "str" },
-      int: { beats: "str", losesTo: "dex" },
+      pedra: { beats: "tesoura", losesTo: "papel" },
+      papel: { beats: "pedra", losesTo: "tesoura" },
+      tesoura: { beats: "papel", losesTo: "pedra" },
     },
   },
 };
@@ -59,11 +59,11 @@ function determineWinner(playerCardId, enemyCardId) {
   const enemyAttribute = cardsData[enemyCardId].attribute;
 
   if (attributes[playerAttribute].beats === enemyAttribute) {
-    return "Player wins!";
+    console.log("Player Wins!");
   } else if (attributes[playerAttribute].losesTo === enemyAttribute) {
-    return "Enemy wins!";
+    console.log("Enemy wins!");
   } else {
-    return "It's a tie!";
+    console.log("It's a tie!");
   }
 }
 
@@ -79,12 +79,12 @@ const drawSelectedCard = (cardIndex) => {
 };
 
 const setBattlefieldCardsImage = (playerCardId, enemyCardId) => {
-  view.battlefieldCards.player.src = cardsData[cardId].img;
+  view.battlefieldCards.player.src = cardsData[playerCardId].img;
   view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
 };
 
 const setCardsField = (cardId) => {
-  hideAllCards();
+  /* hideAllCards(); */
 
   let enemyCardId = getRandomCardId();
 
@@ -94,7 +94,7 @@ const setCardsField = (cardId) => {
   setBattlefieldCardsImage(cardId, enemyCardId);
 
   determineWinner(cardId, enemyCardId);
-  updateScore();
+  /* updateScore(); */
 };
 
 const createCardImage = (cardId, fieldSide) => {
