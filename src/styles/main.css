@@ -71,6 +71,12 @@
   color: #ff0000;
 }
 
+#card-image {
+  height: 15rem;
+  width: 10.5rem;
+  border-radius: 8px;
+}
+
 .card-details {
   display: flex;
   flex-direction: column;
@@ -84,10 +90,13 @@
 
 #card-name {
   font-size: 1.2rem;
+  text-align: center;
 }
 
 #card-attribute {
   font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .str {
@@ -127,7 +136,13 @@
   flex-direction: column;
   height: min-content;
   padding: 0.1rem 0;
-  gap: 2rem;
+  gap: 4rem;
+}
+
+#message {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #ffffff;
 }
 
 .battlefield-cards,
@@ -141,7 +156,6 @@
 .card-infield {
   height: 11.2rem;
   width: 8rem;
-  border: 1px solid #ffffff;
   border-radius: 8px;
 }
 
@@ -153,13 +167,23 @@
 #enemy-card-field {
   height: 180px;
   width: 125px;
+  border-radius: 8px;
 }
 
 #millenium-eye-battlefield {
   height: 100px;
 }
-
-#next-duel-button {
+F #next-duel-button {
   cursor: pointer;
   text-transform: uppercase;
+}
+
+.card {
+  height: 100px;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+
+.player-card:hover {
+  transform: scale(1.2);
 }
