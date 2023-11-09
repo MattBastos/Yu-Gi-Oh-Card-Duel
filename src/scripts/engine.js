@@ -54,7 +54,6 @@ const { view, values } = state;
 
 const getRandomCardId = () => {
   const randomIndex = Math.floor(Math.random() * cardsData.length);
-
   return cardsData[randomIndex].id;
 };
 
@@ -62,6 +61,20 @@ const drawSelectedCard = (cardIndex) => {
   view.card.name.innerText = cardsData[cardIndex].name;
   view.card.attribute.innerText = `Atributo:${cardsData[cardIndex].attribute}`;
   view.card.image.src = cardsData[cardIndex].img;
+};
+
+const setCardsField = (cardId) => {
+  hideAllCards();
+
+  let enemyCardId = getRandomCardId();
+
+  view.fieldSide.player.style.display = "block";
+  view.fieldSide.enemy.style.display = "block";
+
+  view.battlefieldCards.player.src = cardsData[cardId].img;
+  view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
+
+  determineWinner(cardId, enemyCardId);
 };
 
 const createCardImage = (cardId, fieldSide) => {
