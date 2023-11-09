@@ -149,6 +149,8 @@ const hideAllCards = () => {
 const drawButton = () => (view.nextDuelButton.style.display = "block");
 
 const resetDuel = () => {
+  view.card.name.innerText = "Inspecione uma Carta!";
+  view.card.attribute.innerText = "";
   view.card.image.src = `${cardImagePath}card-back.png`;
 
   view.message.innerHTML = "Escolha uma Carta!";
