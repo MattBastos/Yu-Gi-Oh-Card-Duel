@@ -106,6 +106,8 @@ const hideAllCards = () => {
   allCards.forEach((card) => card.remove());
 };
 
+const drawButton = () => (view.nextDuelButton.style.display = "block");
+
 const setCardsField = (cardId) => {
   hideAllCards();
 
@@ -118,6 +120,8 @@ const setCardsField = (cardId) => {
 
   const winner = determineWinner(cardId, enemyCardId);
   updateScores(winner);
+
+  drawButton();
 };
 
 const createCardImage = (cardId, fieldSide) => {
