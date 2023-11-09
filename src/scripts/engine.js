@@ -23,7 +23,8 @@ const cardsData = [
 
 const state = {
   view: {
-    scoreBox: document.getElementById("score-box"),
+    victories: document.getElementById("victories"),
+    losses: document.getElementById("losses"),
     card: {
       name: document.getElementById("card-name"),
       attribute: document.getElementById("card-attribute"),
@@ -53,20 +54,32 @@ const state = {
 
 const { view, values } = state;
 
-function determineWinner(playerCardId, enemyCardId) {
+const determineWinner = (playerCardId, enemyCardId) => {
   const { attributes } = values;
 
   const playerAttribute = cardsData[playerCardId].attribute;
   const enemyAttribute = cardsData[enemyCardId].attribute;
 
   if (attributes[playerAttribute].beats === enemyAttribute) {
-    console.log("Player Wins!");
+    return "player";
   } else if (attributes[playerAttribute].losesTo === enemyAttribute) {
-    console.log("Enemy wins!");
+    return "enemy";
   } else {
-    console.log("It's a tie!");
+    return "draw";
   }
-}
+};
+
+const updateScores = (winner) => {
+  if (winner === "player") {
+    values.playerScore += 1;
+    view.victories.innerText = `Vitórias: ${values.playerScore}`;
+  } else if (winner === "enemy") {
+    values.enemyScore += 1;
+    view.losses.innerText = `Derrotas: ${values.enemyScore}`;
+  } else {
+    return;
+  }
+};
 
 const getRandomCardId = () => {
   const randomIndex = Math.floor(Math.random() * cardsData.length);
@@ -103,8 +116,8 @@ const setCardsField = (cardId) => {
 
   setBattlefieldCardsImage(cardId, enemyCardId);
 
-  determineWinner(cardId, enemyCardId);
-  /* updateScore(); */
+  const winner = determineWinner(cardId, enemyCardId);
+  updateScores(winner);
 };
 
 const createCardImage = (cardId, fieldSide) => {
