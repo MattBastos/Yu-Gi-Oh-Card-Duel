@@ -42,6 +42,7 @@ const state = {
       enemy: document.getElementById("enemy-card-field"),
     },
     nextDuelButton: document.getElementById("next-duel-button"),
+    bgm: document.getElementById("bgm"),
   },
   values: {
     playerScore: 0,
@@ -59,7 +60,7 @@ const { view, values } = state;
 const playSoundtrack = (duelResult) => {
   const audio = new Audio(`${soundtrackPath}${duelResult}.wav`);
 
-  audio.volume = 0.1;
+  audio.volume = 0.2;
   audio.play();
 };
 
@@ -220,6 +221,9 @@ const drawCards = (cardsQuantity, fieldSide) => {
 const init = () => {
   drawCards(5, "player");
   drawCards(5, "enemy");
+
+  view.bgm.volume = 0.3;
+  view.bgm.play();
 };
 
 init();
