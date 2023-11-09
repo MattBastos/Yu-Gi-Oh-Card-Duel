@@ -134,13 +134,24 @@ const hideAllCards = () => {
 
 const drawButton = () => (view.nextDuelButton.style.display = "block");
 
+const resetDuel = () => {
+  view.card.image.src = `${cardImagePath}card-back.png`;
+
+  view.message.innerHTML = "Escolha uma Carta!";
+  view.message.style.color = "#ffffff";
+
+  view.battlefieldCards.player.src = `${cardImagePath}card-back.png`;
+  view.battlefieldCards.enemy.src = `${cardImagePath}card-back.png`;
+
+  view.nextDuelButton.style.display = "none";
+
+  init();
+};
+
 const setCardsField = (cardId) => {
   hideAllCards();
 
   let enemyCardId = getRandomCardId();
-
-  view.fieldSide.player.style.display = "block";
-  view.fieldSide.enemy.style.display = "block";
 
   setBattlefieldCardsImage(cardId, enemyCardId);
 
