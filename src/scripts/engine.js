@@ -1,4 +1,5 @@
 const cardImagePath = "./src/assets/icons/";
+const soundtrackPath = "./src/audios/";
 
 const cardsData = [
   {
@@ -55,6 +56,13 @@ const state = {
 
 const { view, values } = state;
 
+const playSoundtrack = (duelResult) => {
+  const audio = new Audio(`${soundtrackPath}${duelResult}.wav`);
+
+  audio.volume = 0.1;
+  audio.play();
+};
+
 const determineWinner = (playerCardId, enemyCardId) => {
   const { attributes } = values;
 
@@ -74,12 +82,18 @@ const updateMessage = (duelResult) => {
   if (duelResult === "win") {
     view.message.innerText = "Vitória!";
     view.message.style.color = "#00d800";
+
+    playSoundtrack(duelResult);
   } else if (duelResult === "lose") {
     view.message.innerText = "Derrota!";
     view.message.style.color = "#ff0000";
+
+    playSoundtrack(duelResult);
   } else {
     view.message.innerText = "Empate!";
     view.message.style.color = "#999999";
+
+    playSoundtrack("lose");
   }
 };
 
