@@ -74,14 +74,18 @@ const getRandomCardId = () => {
 };
 
 const drawSelectedCard = (cardIndex) => {
-  view.card.name.innerText = cardsData[cardIndex].name;
-  view.card.attribute.innerText = `Atributo:${cardsData[cardIndex].attribute}`;
-  view.card.image.src = cardsData[cardIndex].img;
+  const { name, attribute, image } = view.card;
+
+  name.innerText = cardsData[cardIndex].name;
+  attribute.innerText = `Atributo:${cardsData[cardIndex].attribute}`;
+  image.src = cardsData[cardIndex].img;
 };
 
 const setBattlefieldCardsImage = (playerCardId, enemyCardId) => {
-  view.battlefieldCards.player.src = cardsData[playerCardId].img;
-  view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
+  const { player, enemy } = view.battlefieldCards;
+
+  player.src = cardsData[playerCardId].img;
+  enemy.src = cardsData[enemyCardId].img;
 };
 
 const hideAllCards = () => {
