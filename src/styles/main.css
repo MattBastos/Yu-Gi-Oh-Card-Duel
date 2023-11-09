@@ -57,6 +57,37 @@ button:hover {
   min-width: 300px;
 }
 
+#tutorial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0.5rem;
+  gap: 1.2rem;
+  background-color: #ffffff;
+}
+
+#tutorial-container h1 {
+  font-size: 1rem;
+}
+
+#tutorial-container h2 {
+  font-size: 0.8rem;
+}
+#tutorial-container p {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+#win {
+  color: #00d800;
+}
+
+#lose {
+  color: #ff0000;
+}
+
 .score-box {
   display: flex;
   align-items: center;
@@ -91,7 +122,6 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   height: min-content;
-  width: 100%;
   padding: 1rem;
   gap: 1rem;
   background-color: #ffffff;
@@ -100,6 +130,7 @@ button:hover {
 #card-name {
   font-size: 1.2rem;
   text-align: center;
+  line-height: 1.2;
 }
 
 #card-attribute {
