@@ -78,6 +78,11 @@ const drawSelectedCard = (cardIndex) => {
   view.card.image.src = cardsData[cardIndex].img;
 };
 
+const setBattlefieldCardsImage = (playerCardId, enemyCardId) => {
+  view.battlefieldCards.player.src = cardsData[cardId].img;
+  view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
+};
+
 const setCardsField = (cardId) => {
   hideAllCards();
 
@@ -86,10 +91,10 @@ const setCardsField = (cardId) => {
   view.fieldSide.player.style.display = "block";
   view.fieldSide.enemy.style.display = "block";
 
-  view.battlefieldCards.player.src = cardsData[cardId].img;
-  view.battlefieldCards.enemy.src = cardsData[enemyCardId].img;
+  setBattlefieldCardsImage(cardId, enemyCardId);
 
   determineWinner(cardId, enemyCardId);
+  updateScore();
 };
 
 const createCardImage = (cardId, fieldSide) => {
