@@ -52,6 +52,21 @@ const state = {
 
 const { view, values } = state;
 
+function determineWinner(playerCardId, enemyCardId) {
+  const { attributes } = values;
+
+  const playerAttribute = cardsData[playerCardId].attribute;
+  const enemyAttribute = cardsData[enemyCardId].attribute;
+
+  if (attributes[playerAttribute].beats === enemyAttribute) {
+    return "Player wins!";
+  } else if (attributes[playerAttribute].losesTo === enemyAttribute) {
+    return "Enemy wins!";
+  } else {
+    return "It's a tie!";
+  }
+}
+
 const getRandomCardId = () => {
   const randomIndex = Math.floor(Math.random() * cardsData.length);
   return cardsData[randomIndex].id;
