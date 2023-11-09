@@ -148,18 +148,29 @@ const hideAllCards = () => {
 
 const drawButton = () => (view.nextDuelButton.style.display = "block");
 
-const resetDuel = () => {
+const resetCardInfo = () => {
   view.card.name.innerText = "Inspecione uma Carta!";
   view.card.attribute.innerText = "";
   view.card.image.src = `${cardImagePath}card-back.png`;
+};
 
+const resetMessage = () => {
   view.message.innerHTML = "Escolha uma Carta!";
   view.message.style.color = "#ffffff";
+};
 
+const resetBattlefieldCards = () => {
   view.battlefieldCards.player.src = `${cardImagePath}card-back.png`;
   view.battlefieldCards.enemy.src = `${cardImagePath}card-back.png`;
+};
 
-  view.nextDuelButton.style.display = "none";
+const resetNextDuelButton = () => (view.nextDuelButton.style.display = "none");
+
+const resetDuel = () => {
+  resetCardInfo();
+  resetMessage();
+  resetBattlefieldCards();
+  resetNextDuelButton();
 
   init();
 };
